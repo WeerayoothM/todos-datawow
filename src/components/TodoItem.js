@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import TodoContext from '../context/todoContext';
 import optionsvg from '../images/Option.svg';
+import './TodoItem.css'
 
 function TodoItem({ todo }) {
     const [isEdit, setIsEdit] = useState(false);
@@ -47,11 +48,10 @@ function TodoItem({ todo }) {
                 </>
                 :
                 <>
-                    <div style={{ display: 'flex', alignItems: 'center' }} >
-                        <input onChange={changeStatus} className='checkbox' type="checkbox" style={{ borderRadius: '10px', border: 'none', width: '15px', height: '15px', margin: '0', marginRight: '10px', cursor: 'pointer' }} checked={todo.completed} />
-                        <span className='checkmark'></span>
-                        <div >
-                            <span style={{ textDecoration: todo.completed ? "line-through" : "none", wordBreak: 'break-word', wordWrap: 'break-word', color: todo.completed ? "gray" : "black" }}>{todo.title}</span>
+                    <div className="todo-content" style={{ display: 'flex', alignItems: 'center' }} >
+                        <input onChange={changeStatus} type="checkbox" checked={todo.completed} />
+                        <div style={{ marginLeft: '10px', }} >
+                            <span style={{ textDecoration: todo.completed ? "line-through" : "none", lineHeight: '19px', wordBreak: 'break-word', wordWrap: 'break-word', color: todo.completed ? "#A9A9A9" : "black" }}>{todo.title}</span>
                         </div>
                     </div>
                     <div className="todo-option">
