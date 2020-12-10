@@ -18,12 +18,11 @@ function TodoList() {
                         default:
                             return true;
                     }
+                }).map((todo, idx) => {
+                    return (
+                        <TodoItem key={idx} todo={todo} />
+                    )
                 })
-                    .map((todo, idx) => {
-                        return (
-                            <TodoItem key={idx} todo={todo} />
-                        )
-                    })
             }
         </div>
     )
