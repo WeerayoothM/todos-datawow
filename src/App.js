@@ -1,23 +1,56 @@
-import logo from './logo.svg';
 import './App.css';
+import Progress from './components/Progress';
+import Header from './components/Header';
+import TodoList from './components/TodoList';
+import React, { useEffect, useState } from 'react';
+import TodoContext from './context/todoContext';
+import axios from 'axios';
 
 function App() {
+  const [todoList, setTodoList] = useState([]);
+  const [inputValue, setInputValue] = useState("");
+  const [progress, setProgress] = useState(0);
+  const [selectProgress, setSelectProgress] = useState("All")
+  const fetchTodoData = () => {
+    axios.get('http://localhost:3001/todos')
+      .then(res => {
+        const completedTask = res.data.reduce((acc, todo) => {
+          if (todo.completed) return acc + 1
+          return acc
+        }, 0)
+        setProgress(completedTask)
+        setTodoList(res.data)
+      })
+      .catch(err => console.log(err))
+  };
+
+  const addTodo = (e) => {
+    if (e.key === "Enter") {
+      axios.post('http://localhost:3001/todos', { title: inputValue, completed: false })
+        .then(res => {
+          setInputValue("");
+          fetchTodoData();
+
+        })
+        .catch(err => console.log(err))
+    }
+  };
+
+  useEffect(() => {
+    fetchTodoData();
+  }, []);
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="container">
+        <TodoContext.Provider value={{ todoList, setTodoList, fetchTodoData, progress, selectProgress, setSelectProgress }} >
+          <Progress />
+          <Header />
+          <TodoList />
+          <input className="todo-input" type="text" value={inputValue} onKeyPress={addTodo} onChange={(e) => setInputValue(e.target.value)} placeholder='Add your todo...' />
+        </TodoContext.Provider>
+      </div>
     </div>
   );
 }

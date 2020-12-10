@@ -1,10 +1,117 @@
+* {
+  box-sizing: border-box;
+}
 .App {
-  text-align: center;
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #d1d0d9;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+  width: 55vw;
+  max-height: 80vh;
+  min-height: 400px;
+  padding: 40px 70px;
+  background: #f5f5f5;
+  border-radius: 20px;
+}
+.todos-container {
+  margin-bottom: 15px;
+  overflow-y: auto;
+}
+.todos-container::-webkit-scrollbar {
+  display: none;
+}
+
+.todo-input {
+  border: none;
+  outline: none;
+  width: 100%;
+  border-radius: 20px;
+  padding: 10px 15px;
+}
+.todo-input::placeholder {
+  opacity: 0.5;
+}
+.edit-input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 1rem;
+  word-wrap: break-word;
+  word-break: break-all;
+  border-radius: 20px;
+  padding-right: 10px;
+}
+.todo-option {
+  display: flex;
+  padding: 8px 10px;
+  align-items: center;
+  position: relative;
+}
+.todo-option-list {
+  background-color: #fff;
+  position: absolute;
+  z-index: 10;
+  border-radius: 10px;
+  padding: 10px;
+  right: 0;
+  top: 20px;
+  width: 90px;
+  flex-direction: column;
+  align-items: flex-start;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+}
+.btn-option {
+  cursor: pointer;
+  font-size: 0.75rem;
+  padding: 5px;
+  background-color: transparent;
+  outline: none;
+  border: none;
+}
+.btn-save {
+  line-height: 16.41px;
+  padding: 8px 15px;
+  color: #fff;
+  font-size: 0.75rem;
+  background-color: #585292;
+  border-radius: 50px;
+}
+.btn-edit {
+  text-align: left;
+  width: 100%;
+}
+.btn-delete {
+  text-align: left;
+  width: 100%;
+  color: #e07c7c;
+}
+.btn-edit:hover,
+.btn-delete:hover {
+  background-color: #eeeeee;
+}
+
+input:checked ~ .checkmark {
+  background-color: #2196f3;
+}
+
+.checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -22,17 +129,4 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
