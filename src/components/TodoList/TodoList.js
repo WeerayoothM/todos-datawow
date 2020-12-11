@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
-import TodoItem from './TodoItem';
-import TodoContext from '../context/todoContext';
+import TodoItem from '../TodoItem/TodoItem';
+import TodoContext from '../../context/todoContext';
+import './TodoList.scss'
 
 function TodoList() {
     const { todoList, selectProgress } = useContext(TodoContext);

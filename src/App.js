@@ -1,7 +1,7 @@
-import './App.css';
-import Progress from './components/Progress';
-import Header from './components/Header';
-import TodoList from './components/TodoList';
+import './App.scss';
+import Progress from './components/Progress/Progress';
+import Header from './components/Header/Header';
+import TodoList from './components/TodoList/TodoList';
 import React, { useEffect, useState } from 'react';
 import TodoContext from './context/todoContext';
 import axios from 'axios';
@@ -48,7 +48,10 @@ function App() {
           <Progress />
           <Header />
           <TodoList />
-          <input className="todo-input" type="text" value={inputValue} onKeyPress={addTodo} onChange={(e) => setInputValue(e.target.value)} placeholder='Add your todo...' />
+          <input className="todo-input" type="text" value={inputValue}
+            onKeyPress={addTodo} onChange={(e) => setInputValue(e.target.value)}
+            placeholder='Add your todo...'
+          />
         </TodoContext.Provider>
       </div>
     </div>

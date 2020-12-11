@@ -1,0 +1,108 @@
+.edit-input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 1rem;
+  word-wrap: break-word;
+  word-break: break-all;
+  border-radius: 20px;
+  padding-right: 10px;
+}
+.todo-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.todo-option {
+  display: flex;
+  padding: 8px 10px;
+  align-items: center;
+  position: relative;
+}
+
+.btn-option {
+  cursor: pointer;
+  font-size: 0.75rem;
+  padding: 5px;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  border-radius: 6px;
+}
+.btn-option-list {
+  background-color: #fff;
+  position: absolute;
+  z-index: 2;
+  border-radius: 10px;
+  padding: 10px 10px;
+  right: 0;
+  top: 25px;
+  width: 90px;
+  flex-direction: column;
+  align-items: flex-start;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-option-list button {
+  cursor: pointer;
+  font-size: 0.75rem;
+  padding: 5px;
+  margin: 3px;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  border-radius: 6px;
+  text-align: left;
+  width: 100%;
+}
+
+.btn-save {
+  line-height: 16.41px;
+  padding: 8px 15px;
+  color: #fff;
+  font-size: 0.75rem;
+  background-color: #585292;
+  border-radius: 50px;
+}
+
+.btn-delete {
+  color: #e07c7c;
+}
+
+.btn-edit:hover,
+.btn-delete:hover {
+  background-color: #585292;
+  color: #fff;
+}
+
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  height: 18px;
+  width: 18px;
+  border-radius: 5px;
+  border: 2px solid #585292;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  &:after {
+    content: "\2714";
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    color: #fff;
+    display: none;
+  }
+  &:hover {
+    background-color: #f0f0f0;
+  }
+  &:checked {
+    background-color: #585292;
+    color: #fff;
+    &:after {
+      display: block;
+    }
+  }
+}

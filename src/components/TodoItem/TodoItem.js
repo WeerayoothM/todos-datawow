@@ -1,8 +1,8 @@
 import axios from 'axios';
 import React, { useContext, useState } from 'react';
-import TodoContext from '../context/todoContext';
-import optionsvg from '../images/Option.svg';
-import './TodoItem.css'
+import TodoContext from '../../context/todoContext';
+import optionsvg from '../../images/Option.svg';
+import './TodoItem.scss'
 
 function TodoItem({ todo }) {
     const [isEdit, setIsEdit] = useState(false);
@@ -51,14 +51,14 @@ function TodoItem({ todo }) {
                     <div className="todo-content" style={{ display: 'flex', alignItems: 'center' }} >
                         <input onChange={changeStatus} type="checkbox" checked={todo.completed} />
                         <div style={{ marginLeft: '10px', }} >
-                            <span style={{ textDecoration: todo.completed ? "line-through" : "none", lineHeight: '19px', wordBreak: 'break-word', wordWrap: 'break-word', color: todo.completed ? "#A9A9A9" : "black" }}>{todo.title}</span>
+                            <span className="todo-title" style={{ textDecoration: todo.completed ? "line-through" : "none", lineHeight: '19px', wordBreak: 'break-word', wordWrap: 'break-word', color: todo.completed ? "#A9A9A9" : "black" }}>{todo.title}</span>
                         </div>
                     </div>
                     <div className="todo-option">
-                        <button className="btn-option" onClick={() => setIsShowOption(prev => !prev)} style={{ padding: '0 2px' }}><img src={optionsvg} alt="option" /></button>
-                        <div className="todo-option-list" onMouseOver={() => setIsShowOption(true)} onMouseLeave={() => setIsShowOption(false)} style={{ display: isShowOption ? 'flex' : 'none', transition: 'all 1s ease' }}>
-                            <button className="btn-option btn-edit" onClick={editTodo}>Edit</button>
-                            <button className="btn-option btn-delete" onClick={deleteTodo}>Delete</button>
+                        <button className="btn-option" onClick={() => setIsShowOption(prev => !prev)} style={{ padding: '0 2px' }}><img src={optionsvg} className="btn-option-logo" alt="option" /></button>
+                        <div className="btn-option-list" onMouseOver={() => setIsShowOption(true)} onMouseLeave={() => setIsShowOption(false)} style={{ display: isShowOption ? 'flex' : 'none' }}>
+                            <button className="btn-edit" onClick={editTodo}>Edit</button>
+                            <button className="btn-delete" onClick={deleteTodo}>Delete</button>
                         </div>
                     </div>
                 </>

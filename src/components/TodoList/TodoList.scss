@@ -1,0 +1,8 @@
+.todos-container {
+  margin-bottom: 10px;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+.todos-container::-webkit-scrollbar {
+  display: none;
+}
