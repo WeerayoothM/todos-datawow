@@ -43,8 +43,8 @@ function TodoItem({ todo }) {
         <div style={{ display: 'flex', padding: '3px 5px 3px 10px', justifyContent: 'space-between', alignItems: 'center', backgroundColor: '#fff', borderRadius: '20px', margin: '10px 0' }}>
             {isEdit ?
                 <>
-                    <input className="edit-input" type="text" value={inputValue} onChange={(e) => setInputValue(e.target.value)} />
-                    <button className="btn-option btn-save" onClick={saveEditTodo}>Save</button>
+                    <input className="edit-input" type="text" value={inputValue} onChange={(e) => setInputValue(e.target.value)} onKeyPress={(e) => (e.key === "Enter") && saveEditTodo()} />
+                    <button className="btn-option btn-save" onClick={saveEditTodo} >Save</button>
                 </>
                 :
                 <>
